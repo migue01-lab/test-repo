@@ -21,220 +21,290 @@
         button.check-btn { display: block; width: 100%; padding: 10px; background: #007bff; color: #ffffff; border: none; border-radius: 4px; cursor: pointer; margin-top: 10px; }
         button.check-btn:hover { background: #0056b3; }
         .passage { background: #2a2a2a; padding: 15px; border-radius: 4px; margin-bottom: 20px; border-left: 4px solid #007bff; line-height: 1.8; }
-        #score-container { text-align: center; font-size: 1.8em; color: #ffffff; margin-top: 30px; font-weight: bold; padding: 15px; background: #007bff; border-radius: 8px; display: none; }
+        #score-container { text-align: center; font-size: 1.8em; color: #ffffff; margin-top: 30px; padding: 15px; background: #007bff; border-radius: 8px; display: none; }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Examen B1 Completo</h1>
-        
-        <h2>Parte 1: Gramática</h2>
-        <div id="part1-container"></div>
 
-        <h2>Parte 2: Comprensión Lectora</h2>
-        <div class="passage">
-            <p><strong>Read the passage below and decide if the statements are True, False, or Not Given.</strong></p>
-            <p>Remote work and flexible schedules have transformed the modern workplace over the last decade. While many employees appreciate the autonomy and elimination of long daily commutes, some managers express concerns regarding team cohesion and spontaneous collaboration. Companies are currently experimenting with hybrid models, aiming to balance the benefits of working from home with the advantages of in-person interaction. Furthermore, studies suggest that productivity levels often remain stable or even increase when workers have greater control over their environments, although maintaining a healthy work-life boundary remains a significant challenge for many individuals.</p>
-        </div>
-        <div id="part2-container"></div>
+<div class="container">
+    <h1>Examen B1 Completo</h1>
 
-        <h2>Parte 3: Información Personal</h2>
-        <div id="part3-container"></div>
+    <h2>Parte 1: Gramática</h2>
+    <div id="part1-container"></div>
 
-        <h2>Parte 4: Reported Speech</h2>
-        <div id="part4-container"></div>
-
-        <div id="score-container"></div>
+    <h2>Parte 2: Comprensión Lectora</h2>
+    <div class="passage">
+        <strong>Read the passage below and decide if the statements are True, False, or Not Given.</strong><br><br>
+        Remote work and flexible schedules have transformed the modern workplace over the last decade. While many employees appreciate the autonomy and elimination of long daily commutes, some managers express concerns regarding team cohesion and spontaneous collaboration. Companies are currently experimenting with hybrid models, aiming to balance the benefits of working from home with the advantages of in-person interaction. Furthermore, studies suggest that productivity levels often remain stable or even increase when workers have greater control over their environments, although maintaining a healthy work-boundary remains a significant challenge for many individuals.
     </div>
+    <div id="part2-container"></div>
 
-    <script>
-        let score = 0;
-        const totalForScore = 35; 
-        let answeredCount = 0;
+    <h2>Parte 3: Información Personal</h2>
+    <div id="part3-container"></div>
 
-        const part1Questions = [
-            { "question": "When I was a child, I _____ ride my bike to school every day.", "options": ["used to", "am used to", "use to"], "answer": "used to", "explanation": "'Used to' is the correct form for past habits that no longer happen." },
-            { "question": "'I have a headache,' she said.", "options": ["She said that she has a headache.", "She said that she had a headache.", "She said that she has had a headache."], "answer": "She said that she had a headache.", "explanation": "In reported speech, the present tense 'have' shifts back to the past tense 'had'." },
-            { "question": "If you have a bad cold, you should _____.", "options": ["put a bandage.", "take some antibiotics.", "drink plenty of fluids."], "answer": "drink plenty of fluids.", "explanation": "Drinking fluids is a common and recommended remedy for a cold; antibiotics do not treat viruses." },
-            { "question": "'I didn't go to the doctor yesterday,' he said.", "options": ["He said that he didn't go to the doctor yesterday.", "He said that he hadn't gone to the doctor the day before.", "He said that he hasn't gone to the doctor the day before."], "answer": "He said that he hadn't gone to the doctor the day before.", "explanation": "The past simple 'didn't go' shifts to the past perfect 'hadn't gone', and 'yesterday' becomes 'the day before'." },
-            { "question": "'Where are you going?' she asked.", "options": ["She asked where I was going.", "She asked where I am going.", "She asked where was I going."], "answer": "She asked where I was going.", "explanation": "Reported questions follow a statement word order, shifting the tense back." },
-            { "question": "My brother _____ eat vegetables when he was a kid, but now he loves them.", "options": ["didn't use to", "doesn't use to", "didn't used to"], "answer": "didn't use to", "explanation": "'Didn't use to' is the correct negative form for a past habit." },
-            { "question": "My parents _____ me _____ in a small city.", "options": ["take / care of", "bring / up", "wake / up"], "answer": "bring / up", "explanation": "The phrasal verb 'bring up' means to raise a child." },
-            { "question": "Which word has a silent letter?", "options": ["cat", "sign", "jump"], "answer": "sign", "explanation": "The letter 'g' in 'sign' is silent." },
-            { "question": "'I am feeling weak,' she said.", "options": ["She said that she is feeling weak.", "She said that she was feeling weak.", "She said that she has felt weak."], "answer": "She said that she was feeling weak.", "explanation": "Present continuous 'am feeling' shifts back to past continuous 'was feeling'." },
-            { "question": "She is used to _____ up early every morning.", "options": ["wake", "waking", "woke"], "answer": "waking", "explanation": "'Be used to' is followed by a gerund (verb + -ing)." },
-            { "question": "During the celebration, we usually _____ fireworks.", "options": ["set off", "hold", "stand"], "answer": "set off", "explanation": "'Set off' is the standard collocation for igniting fireworks." },
-            { "question": "'I have a running _____,' she said.", "options": ["nose", "ear", "throat"], "answer": "nose", "explanation": "'Running nose' is the common expression for nasal congestion with mucus." },
-            { "question": "My teacher lets us _____ our phones in the classroom.", "options": ["using", "use", "used"], "answer": "use", "explanation": "The causative verb 'let' is followed by the base form of the verb." },
-            { "question": "I am used to _____ up early.", "options": ["get", "getting", "got"], "answer": "getting", "explanation": "'Be used to' requires the gerund form 'getting'." },
-            { "question": "'Are you feeling better?' she asked.", "options": ["She asked if I am feeling better.", "She asked if I was feeling better.", "She asked if were I feeling better."], "answer": "She asked if I was feeling better.", "explanation": "A yes/no reported question uses 'if' and follows statement word order." },
-            { "question": "'I didn't steal the money,' he said.", "options": ["He denied stealing the money.", "He denied to steal the money.", "He denied that he steal the money."], "answer": "He denied stealing the money.", "explanation": "The reporting verb 'deny' is followed by the gerund form." },
-            { "question": "'Why don't we go to the movies?' she suggested.", "options": ["She suggested going to the movies.", "She suggested to go to the movies.", "She suggested that we to go to the movies."], "answer": "She suggested going to the movies.", "explanation": "The reporting verb 'suggest' is followed by the gerund." },
-            { "question": "'It is better to see the doctor,' he explained.", "options": ["He explained that it was better to see the doctor.", "He explained that it has been better to see the doctor.", "He explained that it is better to see the doctor."], "answer": "He explained that it was better to see the doctor.", "explanation": "The tense backshifts from 'is' to 'was' in reported speech." },
-            { "question": "'How did you feel?' she asked.", "options": ["She asked how I felt.", "She asked how did I feel.", "She asked how I had felt."], "answer": "She asked how I had felt.", "explanation": "Reported questions follow a statement word order, shifting the tense back." }
-        ];
+    <h2>Parte 4: Reported Speech</h2>
+    <div id="part4-container"></div>
 
-        const part2Questions = [
-            { "question": "Many employees view the elimination of long commutes as a benefit.", "options": ["True", "False", "Not Given"], "answer": "True", "explanation": "The passage states that many employees appreciate the elimination of long daily commutes." },
-            { "question": "Productivity levels consistently decrease with remote work.", "options": ["True", "False", "Not Given"], "answer": "False", "explanation": "The passage notes that productivity levels often remain stable or even increase." },
-            { "question": "Most major corporations have completely abandoned hybrid models in favor of traditional office setups.", "options": ["True", "False", "Not Given"], "answer": "Not Given", "explanation": "The passage mentions companies experimenting with hybrid models, but does not provide details on major corporations abandoning them." },
-            { "question": "Managers are universally enthusiastic about spontaneous collaboration in hybrid work environments.", "options": ["True", "False", "Not Given"], "answer": "False", "explanation": "The passage notes that some managers express concerns regarding team cohesion and spontaneous collaboration." },
-            { "question": "Balancing work and personal life is difficult for many remote employees.", "options": ["True", "False", "Not Given"], "answer": "True", "explanation": "The passage explicitly states that maintaining a healthy work-life boundary remains a significant challenge for many individuals." },
-            { "question": "The trend towards remote work is expected to reverse entirely by next year.", "options": ["True", "False", "Not Given"], "answer": "Not Given", "explanation": "The passage does not mention future expectations regarding the complete reversal of remote work." }
-        ];
+    <div id="score-container"></div>
+</div>
 
-        const part3Questions = [
-            { "question": "What health problems or symptoms do you usually get when you are stressed?", "model": "I usually get a headache and feel very tired." },
-            { "question": "What is the best home remedy or cure for a bad cold?", "model": "It's important to drink hot tea with honey when you have a cold." },
-            { "question": "Who lets you leave work or school early when you are sick?", "model": "My boss always lets me go home early if I feel unwell." },
-            { "question": "What did you use to do to stay healthy in the past?", "model": "I used to go to the gym every weekend." },
-            { "question": "Are you used to waking up early to exercise?", "model": "No, I am not used to exercising in the morning." }
-        ];
+<script>
+    let score = 0;
+    const totalForScore = 35;
+    let answeredCount = 0;
 
-        const part4Sentences = [
-            { "original": "'I will buy a new car tomorrow,' he said.", "answer": "He said that he would buy a new car the next day.", "explanation": "'will' changes to 'would', and 'tomorrow' changes to 'the next day'." },
-            { "original": "'We visited our grandparents last month,' they told me.", "answer": "They told me that they had visited their grandparents the month before.", "explanation": "Past simple 'visited' changes to past perfect 'had visited', and 'last month' changes to 'the month before'." },
-            { "original": "'I am leaving this city today,' she explained.", "answer": "She explained that she was leaving that city that day.", "explanation": "Present continuous 'am leaving' changes to past continuous 'was leaving', 'this' to 'that', and 'today' to 'that day'." },
-            { "original": "'I can finish this project now,' he said.", "answer": "He said that he could finish that project then.", "explanation": "'can' changes to 'could', 'this' to 'that', and 'now' to 'then'." },
-            { "original": "'I have lived here for two years,' she told him.", "answer": "She told him that she had lived there for two years.", "explanation": "Present perfect 'have lived' changes to past perfect 'had lived', and 'here' to 'there'." }
-        ];
-
-        function updateScore() {
-            answeredCount++;
-            if (answeredCount === totalForScore) {
-                const scoreContainer = document.getElementById('score-container');
-                scoreContainer.style.display = 'block';
-                scoreContainer.innerHTML = `Tu puntaje final es: ${score} / ${totalForScore}`;
-            }
+    const part1Questions = [
+        {
+            question: "When I was a child, I _____ ride my bike to school every day.",
+            options: ["used to", "am used to", "use to", "is used to"],
+            answer: "used to",
+            explanation: " 'Used to' is the correct form for past habits that no longer happen."
+        },
+        {
+            question: "I have a headache.",
+            options: ["She said that she had a headache.", "She said that she has had a headache.", "She said that she had had a headache."],
+            answer: "She said that she had a headache.",
+            explanation: "In reported speech, the present tense 'have' shifts back to the past tense 'had'."
+        },
+        {
+            question: "If you have a bad cold, you should _____.",
+            options: ["put a bandage", "take some antibiotics", "drink plenty of fluids"],
+            answer: "drink plenty of fluids",
+            explanation: "Drinking fluids is a common and recommended remedy for a cold; antibiotics do not treat viruses."
+        },
+        {
+            question: "I didn't go to the doctor yesterday, he said.",
+            options: ["He said that he didn't go to the doctor yesterday.", "He said that he hadn't gone to the doctor the day before.", "He said that he hasn't gone to the doctor the day before."],
+            answer: "He said that he hadn't gone to the doctor the day before.",
+            explanation: "The past simple 'didn't go' shifts to the past perfect 'hadn't gone', and 'yesterday' becomes 'the day before'."
+        },
+        {
+            question: "'Where are you going?' she asked.",
+            options: ["She asked where I was going.", "She asked where I am going.", "She asked where was I going."],
+            answer: "She asked where I was going.",
+            explanation: "Reported questions follow a statement word order, shifting the tense back."
+        },
+        {
+            question: "My brother _____ eat vegetables, but now he loves them.",
+            options: ["didn't use to", "doesn't use to", "didn't used to"],
+            answer: "didn't use to",
+            explanation: "'Didn't use to' is the correct negative form for past habits that no longer happen."
+        },
+        {
+            question: "My parents _____ me in a small city.",
+            options: ["take care of", "bring up", "grow up"],
+            answer: "bring up",
+            explanation: "'Bring up' means to raise a child."
         }
+    ];
 
-        function createMultipleChoice(containerId, questions) {
-            const container = document.getElementById(containerId);
-            questions.forEach((q, index) => {
-                const questionDiv = document.createElement('div');
-                questionDiv.className = 'question';
-                questionDiv.innerHTML = `
-                    <p>${index + 1}. ${q.question}</p>
-                    <ul class="options">
-                        ${q.options.map(option => `
-                            <li>
-                                <label>
-                                    <input type="radio" name="${containerId}-${index}" value="${option}">
-                                    ${option}
-                                </label>
-                            </li>
-                        `).join('')}
-                    </ul>
-                    <button class="check-btn" id="${containerId}-show-answer-${index}" onclick="showAnswer('${containerId}', ${index})" style="display:none;">Show the answer</button>
-                    <div id="${containerId}-explanation-${index}" class="explanation"></div>
-                `;
-                container.appendChild(questionDiv);
+    const part2Questions = [
+        {
+            question: "Many employees view the elimination of long commutes as a benefit.",
+            options: ["True", "False", "Not Given"],
+            answer: "True",
+            explanation: "The passage states that many employees appreciate the elimination of long daily commutes."
+        },
+        {
+            question: "Productivity levels consistently decrease with remote work.",
+            options: ["True", "False", "Not Given"],
+            answer: "False",
+            explanation: "The passage notes that productivity levels often remain stable or even increase."
+        },
+        {
+            question: "Companies plan to completely eliminate remote work by next year.",
+            options: ["True", "False", "Not Given"],
+            answer: "Not Given",
+            explanation: "The text mentions hybrid models but does not give specific future timelines for eliminating remote work."
+        },
+        {
+            question: "Maintaining a healthy work-life boundary is difficult for some remote workers.",
+            options: ["True", "False", "Not Given"],
+            answer: "True",
+            explanation: "The text confirms that maintaining a healthy work-life boundary remains a significant challenge for many individuals."
+        }
+    ];
+
+    const part3Questions = [
+        {
+            question: "What is your full name?",
+            model: "Mi nombre completo es Miguelina Urbina de la Rosa."
+        },
+        {
+            question: "Where did you work previously?",
+            model: "Anteriormente trabajé en el Centro Venezolano Americano."
+        },
+        {
+            question: "What digital tools have you utilized for educational activities?",
+            model: "He utilizado herramientas como Canva, LiveWorksheets y anteriormente Google Jamboard."
+        }
+    ];
+
+    const part4Sentences = [
+        {
+            original: "I am leaving the city today.",
+            answer: "She explained that she was leaving the city that day.",
+            explanation: "The tense backshifts from 'is' to 'was' in reported speech."
+        },
+        {
+            original: "Can you finish the project by tomorrow?",
+            answer: "He asked if I could finish the project by the next day.",
+            explanation: "'Can' changes to 'could', and 'tomorrow' becomes 'the next day'."
+        },
+        {
+            original: "I have lived here for two years.",
+            answer: "She told him that she had lived there for two years.",
+            explanation: "Present perfect 'have lived' shifts to past perfect 'had lived'."
+        }
+    ];
+
+    function updateScore() {
+        answeredCount++;
+        if (answeredCount === totalForScore) {
+            const scoreContainer = document.getElementById('score-container');
+            scoreContainer.style.display = 'block';
+            scoreContainer.innerHTML = `Tu puntaje final es: ${score} / ${totalForScore}`;
+        }
+    }
+
+    function createMultipleChoice(containerId, questions) {
+        const container = document.getElementById(containerId);
+        questions.forEach((q, index) => {
+            const questionDiv = document.createElement('div');
+            questionDiv.className = 'question';
+            questionDiv.innerHTML = `
+                <p>${index + 1}. ${q.question}</p>
+                <ul class="options">
+                    ${q.options.map(option => `
+                        <li>
+                            <label>
+                                <input type="radio" name="${containerId}-${index}" value="${option}">
+                                ${option}
+                            </label>
+                        </li>
+                    `).join('')}
+                </ul>
+                <button class="check-btn" id="${containerId}-btn-${index}" onclick="checkMultipleChoice('${containerId}', ${index})" style="display:none;">Comprobar</button>
+                <div id="${containerId}-explanation-${index}" class="explanation"></div>
+            `;
+            container.appendChild(questionDiv);
+        });
+
+        document.querySelectorAll(`input[type="radio"]`).forEach(radio => {
+            radio.addEventListener('change', function() {
+                const name = this.name;
+                if (!name.startsWith(containerId)) return;
+                const index = name.split('-')[2];
+                const btn = document.getElementById(`${containerId}-btn-${index}`);
+                btn.style.display = 'block';
+                document.querySelectorAll(`input[name="${name}"]`).forEach(input => input.disabled = true);
             });
+        });
+    }
 
-            document.querySelectorAll(`input[type="radio"]`).forEach(radio => {
-                radio.addEventListener('change', function() {
-                    const name = this.name;
-                    if (!name.startsWith(containerId)) return;
-                    const index = name.split('-')[2];
-                    const showAnswerBtn = document.getElementById(`${containerId}-show-answer-${index}`);
-                    showAnswerBtn.style.display = 'block';
+    function checkMultipleChoice(containerId, index) {
+        const name = `${containerId}-${index}`;
+        const selectedInput = document.querySelector(`input[name="${name}"]:checked`);
+        const selectedOption = selectedInput ? selectedInput.value : null;
+        const currentQuestion = (containerId === 'part1-container') ? part1Questions[index] : part2Questions[index];
+        const explanationDiv = document.getElementById(`${containerId}-explanation-${index}`);
+        const btn = document.getElementById(`${containerId}-btn-${index}`);
 
-                    document.querySelectorAll(`input[name="${name}"]`).forEach(input => {
-                        input.disabled = true;
-                    });
-                });
-            });
+        explanationDiv.style.display = 'block';
+        btn.style.display = 'none';
+
+        if (selectedOption === currentQuestion.answer) {
+            explanationDiv.className = 'explanation correct';
+            explanationDiv.innerHTML = `<strong>¡Correcto!</strong>${currentQuestion.explanation}`;
+            score += 5;
+        } else {
+            explanationDiv.className = 'explanation incorrect';
+            explanationDiv.innerHTML = `<strong>Incorrecto.</strong> La respuesta correcta era: <strong>${currentQuestion.answer}</strong><br>${currentQuestion.explanation}`;
+        }
+        updateScore();
+    }
+
+    function createPersonalQuestions(containerId, questions) {
+        const container = document.getElementById(containerId);
+        questions.forEach((q, index) => {
+            const questionDiv = document.createElement('div');
+            questionDiv.className = 'question';
+            questionDiv.innerHTML = `
+                <p>${index + 1}. ${q.question}</p>
+                <input type="text" id="${containerId}-input-${index}" placeholder="Escribe tu respuesta aquí...">
+                <button class="check-btn" onclick="checkPersonalAnswer('${containerId}', ${index})">Evaluar</button>
+                <div id="${containerId}-explanation-${index}" class="explanation"></div>
+            `;
+            container.appendChild(questionDiv);
+        });
+    }
+
+    function checkPersonalAnswer(containerId, index) {
+        const input = document.getElementById(`${containerId}-input-${index}`);
+        const explanationDiv = document.getElementById(`${containerId}-explanation-${index}`);
+        const userAnswer = input.value.trim();
+        const currentQuestion = part3Questions[index];
+
+        explanationDiv.style.display = 'block';
+
+        if (userAnswer.length > 0) {
+            explanationDiv.className = 'explanation correct';
+            explanationDiv.innerHTML = `<strong>¡Respuesta registrada!</strong><br><br><strong>Respuesta modelo:</strong> ${currentQuestion.model}`;
+            score += 5;
+        } else {
+            explanationDiv.className = 'explanation incorrect';
+            explanationDiv.innerHTML = `<strong>Incorrecto.</strong> Debes escribir una respuesta.`;
         }
 
-        function showAnswer(containerId, index) {
-            const name = `${containerId}-${index}`;
-            const selectedInput = document.querySelector(`input[name="${name}"]:checked`);
-            const explanationDiv = document.getElementById(`${containerId}-explanation-${index}`);
-            const showAnswerBtn = document.getElementById(`${containerId}-show-answer-${index}`);
-            
-            let questionsArray = [];
-            if (containerId === 'part1-container') questionsArray = part1Questions;
-            else if (containerId === 'part2-container') questionsArray = part2Questions;
+        input.disabled = true;
+        input.nextElementSibling.disabled = true;
+        updateScore();
+    }
 
-            const currentQuestion = questionsArray[index];
-            const selectedOption = selectedInput ? selectedInput.value : null;
+    function createReportedSpeech(containerId, sentences) {
+        const container = document.getElementById(containerId);
+        sentences.forEach((s, index) => {
+            const questionDiv = document.createElement('div');
+            questionDiv.className = 'question';
+            questionDiv.innerHTML = `
+                <p><strong>Direct:</strong> ${s.original}</p>
+                <input type="text" id="${containerId}-input-${index}" placeholder="Escribe tu respuesta en Reported Speech...">
+                <button class="check-btn" onclick="checkReportedSpeech('${containerId}', ${index})">Comprobar</button>
+                <div id="${containerId}-explanation-${index}" class="explanation"></div>
+            `;
+            container.appendChild(questionDiv);
+        });
+    }
 
-            explanationDiv.style.display = 'block';
-            showAnswerBtn.style.display = 'none';
+    function checkReportedSpeech(containerId, index) {
+        const input = document.getElementById(`${containerId}-input-${index}`);
+        const explanationDiv = document.getElementById(`${containerId}-explanation-${index}`);
+        const userAnswer = input.value.trim();
+        const correctAnswer = part4Sentences[index].answer;
 
-            if (selectedOption === currentQuestion.answer) {
-                explanationDiv.className = 'explanation correct';
-                explanationDiv.innerHTML = '<strong>¡Correcto!</strong>';
-                score++;
-            } else {
-                explanationDiv.className = 'explanation incorrect';
-                explanationDiv.innerHTML = `<strong>Incorrecto.</strong> ${currentQuestion.explanation}`;
-            }
-            updateScore();
+        explanationDiv.style.display = 'block';
+
+        if (userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
+            explanationDiv.className = 'explanation correct';
+            explanationDiv.innerHTML = `<strong>¡Correcto!</strong>`;
+            score += 5;
+        } else {
+            explanationDiv.className = 'explanation incorrect';
+            explanationDiv.innerHTML = `<strong>Incorrecto.</strong> La respuesta correcta es:<br><br><strong>${correctAnswer}</strong><br><br>${part4Sentences[index].explanation}`;
         }
+        
+        input.disabled = true;
+        input.nextElementSibling.disabled = true;
+        updateScore();
+    }
 
-        function createPersonalQuestions(containerId, questions) {
-            const container = document.getElementById(containerId);
-            questions.forEach((q, index) => {
-                const questionDiv = document.createElement('div');
-                questionDiv.className = 'question';
-                questionDiv.innerHTML = `
-                    <p>${index + 1}. ${q.question}</p>
-                    <input type="text" id="${containerId}-input-${index}" placeholder="Escribe tu respuesta aquí...">
-                    <button class="check-btn" onclick="checkPersonalAnswer('${containerId}', ${index})">Evaluar</button>
-                    <div id="${containerId}-explanation-${index}" class="explanation"></div>
-                `;
-                container.appendChild(questionDiv);
-            });
-        }
+    window.onload = function() {
+        createMultipleChoice('part1-container', part1Questions);
+        createMultipleChoice('part2-container', part2Questions);
+        createPersonalQuestions('part3-container', part3Questions);
+        createReportedSpeech('part4-container', part4Sentences);
+    };
+</script>
 
-        function checkPersonalAnswer(containerId, index) {
-            const input = document.getElementById(`${containerId}-input-${index}`);
-            const explanationDiv = document.getElementById(`${containerId}-explanation-${index}`);
-            const userAnswer = input.value.trim();
-
-            explanationDiv.style.display = 'block';
-
-            if (userAnswer.length > 0) {
-                explanationDiv.className = 'explanation correct';
-                explanationDiv.innerHTML = `<strong>¡Respuesta registrada!</strong><br><em>Respuesta modelo:</em> ${part3Questions[index].model}`;
-                score++;
-            } else {
-                explanationDiv.className = 'explanation incorrect';
-                explanationDiv.innerHTML = `<strong>Incorrecto.</strong> Debes escribir una respuesta.`;
-            }
-            input.disabled = true;
-            input.nextElementSibling.disabled = true;
-            updateScore();
-        }
-
-        function createReportedSpeech(containerId, sentences) {
-            const container = document.getElementById(containerId);
-            sentences.forEach((s, index) => {
-                const questionDiv = document.createElement('div');
-                questionDiv.className = 'question';
-                questionDiv.innerHTML = `
-                    <p><strong>Direct:</strong> ${s.original}</p>
-                    <input type="text" id="${containerId}-input-${index}" placeholder="Escribe tu respuesta en Reported Speech...">
-                    <button class="check-btn" onclick="checkReportedSpeech('${containerId}', ${index})">Comprobar</button>
-                    <div id="${containerId}-explanation-${index}" class="explanation"></div>
-                `;
-                container.appendChild(questionDiv);
-            });
-        }
-
-        function checkReportedSpeech(containerId, index) {
-            const input = document.getElementById(`${containerId}-input-${index}`);
-            const explanationDiv = document.getElementById(`${containerId}-explanation-${index}`);
-            const userAnswer = input.value.trim();
-            const correctAnswer = part4Sentences[index].answer;
-
-            explanationDiv.style.display = 'block';
-
-            if (userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
-                explanationDiv.className = 'explanation correct';
-                explanationDiv.innerHTML = '<strong>¡Correcto!</strong>';
-                score++;
-            } else {
-                explanationDiv.className = 'explanation incorrect';
-                explanationDiv.innerHTML = `<strong>Incorrecto.</strong> La respuesta correcta es:<br>${correctAnswer}<br><strong>Explicación
+</body>
+</html>
